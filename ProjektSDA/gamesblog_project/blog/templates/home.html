@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <title>My  Blog</title>
+    </head>
+<body>
+    
+<h1>My peronal blog</h1>
+<h2>I've written {{posts.count}} post{{posts|pluralize}}</h2>
+{% for post in posts %}
+    <a href="{% url 'detail' post.id %}">
+        <h3>{{post.title}}</h3>
+    </a>
+    <h4>{{post.data|date:"j E Y"}}</h4>
+    <p>{{ post.text|truncatechars:200 }}</p>
+{% endfor %}
+
+
+</body>
+</html>
